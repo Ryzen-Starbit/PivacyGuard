@@ -10,7 +10,7 @@ DEFAULT_SETTINGS = {
     "alert_cooldown_sec":    10,
     "frame_skip":             2,
     "absence_alert_sec":     10,
-    "capture_cooldown_sec":   5,
+    "capture_cooldown_sec":   3,
     "absence_alert_enabled": True,
     "tray_on_minimize":      False,
     "lightweight_mode":      False,
