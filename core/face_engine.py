@@ -33,7 +33,7 @@ class FaceEngine:
         self._scale_factor = 0.5
         self._edge_zone_pct = 0.28
         self._unknown_frame_count = 0
-        self._unknown_confirm_threshold = 8   # ~0.25s at 30fps
+        self._unknown_confirm_threshold = 3   # 3 analyzed frames - works at any FPS
         os.makedirs(self.data_dir, exist_ok=True)
 
     def load_authorized_faces(self):

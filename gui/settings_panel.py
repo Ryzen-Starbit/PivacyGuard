@@ -10,7 +10,7 @@ DEFAULT_SETTINGS = {
     "alert_cooldown_sec":    10,
     "frame_skip":             2,
     "absence_alert_sec":     10,
-    "capture_cooldown_sec":   3,
+    "capture_cooldown_sec":   5,
     "absence_alert_enabled": True,
     "tray_on_minimize":      False,
     "lightweight_mode":      False,
@@ -210,8 +210,8 @@ class SettingsDialog(QDialog):
         mw = self.main_window
         if hasattr(mw, '_worker') and mw._worker:
             mw._worker._frame_skip = s["frame_skip"]
-        mw._alert_cooldown_max    = s["alert_cooldown_sec"] * 30
-        mw._capture_cooldown_max  = s["capture_cooldown_sec"] * 30
+        mw._alert_cooldown_max    = max(10, s["alert_cooldown_sec"] * 2)
+        mw._capture_cooldown_max  = max(5, s["capture_cooldown_sec"] * 2)
         mw._absence_alert_sec     = s["absence_alert_sec"]
         mw._absence_alert_enabled = s["absence_alert_enabled"]
         mw._tray_on_minimize      = s["tray_on_minimize"]

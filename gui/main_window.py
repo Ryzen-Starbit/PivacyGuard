@@ -102,9 +102,12 @@ class MainWindow(QMainWindow):
 
         cfg = load_settings()
         self._alert_cooldown        = 0
-        self._alert_cooldown_max    = cfg["alert_cooldown_sec"] * 30
+        # Use analyzed-frame counts that work regardless of actual FPS
+        # Roughly 1 analyzed frame per frame_skip webcam frames
+        # We use small fixed counts so they work at any FPS
+        self._alert_cooldown_max    = max(10, cfg["alert_cooldown_sec"] * 2)
         self._capture_cooldown      = 0
-        self._capture_cooldown_max  = cfg["capture_cooldown_sec"] * 30
+        self._capture_cooldown_max  = max(5, cfg["capture_cooldown_sec"] * 2)
         self._absence_alert_enabled = cfg["absence_alert_enabled"]
         self._absence_alert_sec     = cfg["absence_alert_sec"]
         self._absence_frames        = 0         
